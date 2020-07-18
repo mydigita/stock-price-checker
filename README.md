@@ -1,2 +1,9 @@
-# stock-price-checker
-NASDAQ Stock Price Checker
+**FreeCodeCamp**- Information Security and Quality Assurance Project
+------
+
+Project: NASDAQ Stock Price Checker
+
+
+### by: TheTradeCoder
+
+

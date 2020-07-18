@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FCC -Stock Price Checker</title>
+    <meta name="description" content="NASDAQ Stock Price Checker"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="author" content="theTradeCoder, Mamun Abdullah">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./public/style.css"/>
+  </head>
+  <body>
+    <header class="bg-teal mb-5">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-teal container">
+          <a id="brand" class="navbar-brand" href="#brand">thetradecoder</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="menu" class="collapse navbar-collapse justify-content-end">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link text-light menu-font" href="#about">About</a>
+              <a class="nav-item nav-link text-light menu-font" href="#single">Stock Price</a>
+              <a class="nav-item nav-link text-light menu-font" href="#compare">Compare Stocks</a>
+              <a class="nav-item nav-link text-light menu-font" href="#userstories">User Guide</a>
+            </div>
+          </div>
+      </nav>
+    </header>
+  
+    <div id="testui" class="container">
+      <div id="title" class="auto">
+      <h1 class="text-center">NASDAQ Stock Price Checker</h1>
+      </div>
+      <hr/>
+      <div id="oneStock" class="d-flex">
+      <div id="single">
+      <form id="testForm2" class="shadow">
+        <h2 class="text-center">Get Single Stock Price and Total Likes</h2>
+        <div class="form-group">
+        <label for="singleStock">Insert a stock name : </label>
+        <input id="singleStock" type="text" name="stock" placeholder="goog" class="form-control" required="" />
+        </div>
+        <div class="form-group">
+        <label for="singleLike">
+        <input id="singleLike" type="checkbox" name="like" value="true"/> Check the box if you like the stock </label>
+        </div>
+        <button type="submit" class="btn btn-primary form-control">Get Stock Price!</button>
+      </form>
+        </div>
+        <div id="result-board-single" class="flex-fill shadow">
+         <code id="jsonResultSingle"></code>
+        </div>
+      </div>
+      <hr/>
+      <div id="twoStock" class="d-flex">
+      <div id="compare">
+      <form id="testForm" class="shadow">
+        <h2 class="text-center">Compare and Get Relative Likes</h2>
+        <div class="form-group">
+        <label for="dualFirst">Insert First Stock Name : </label>
+        <input id="dualFirst" type="text" name="stock" placeholder="goog" class="form-control" required="">
+        </div>
+        <div class="form-group">
+        <label for="dualSecond">Insert Second Stock Name : </label>
+        <input id="dualSecond" type="text" name="stock" placeholder="msft" class="form-control" required="">
+        </div>
+        <div class="form-group">
+        <label for="bothLiked">
+        <input id="bothLiked" type="checkbox" name="like" value="true">Check the box if you like the both stocks</label>
+        </div>
+          <button type="submit" class="btn btn-primary form-control">Compare Stocks</button>
+      </form>
+      </div>
+        <div id="result-board-com" class="flex-fill shadow">
+          <code id="jsonResultCom"></code>
+        </div>
+      </div>
+      
+            
+      <hr>
+      <div id="userstories">
+      <h2 class="text-center">User Guide</h2>
+      <h3>Example usage:</h3>
+      <code>/api/stock-prices?stock=goog</code><br>
+      <code>/api/stock-prices?stock=goog&amp;like=true</code><br>
+      <code>/api/stock-prices?stock=goog&amp;stock=msft</code><br>
+      <code>/api/stock-prices?stock=goog&amp;stock=msft&amp;like=true</code><br>
+      <h3>Example return:</h3>
+      <code>{"stockData":{"stock":"GOOG","price":"1416.73","likes":1}}</code><br>
+      <code>{"stockData":[{"stock":"MSFT","price":"181.40","rel_likes":-1},{"stock":"GOOG","price":"1416.73","rel_likes":1}]}</code>
+    </div>
+    
+    </div>
+    
+    <footer>
+      <div class="d-flex flex-row flex-wrap justify-content-center container">
+        <div id="about" class="flex-grow-1">
+          <h3>About </h3>
+          <p>- A Full Stack Javascript App</p>
+          <p>-<a href="https://www.freecodecamp.org/" class="text-primary"> FCC Information Security And Quality Assurance Project</a></p>
+          <p>- NASDAQ - Stock Price Checker /  API Generator</p>
+          <p>- National Association of Securities Dealers Automated Quotations, USA</p>
+        
+        </div>
+        <div id="dev-info" class="flex-grow-1">
+          <h3>App Developer</h3>
+          - <a href="https://www.linkedin.com/in/thetradecoder/" class="text-primary">thetradecoder</a>       
+        </div>
+        
+        <div id="data-source" class="flex-grow-1">
+          <h3>Data Source</h3>
+          - <a href="https://iexcloud.io" class="text-primary">Data provided by IEX Cloud</a>
+        </div>
+      </div>
+    </footer>
+  
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script>
+      $(function() {
+        $('#testForm2').submit(function(e) {
+          
+          $.ajax({
+            url: '/api/stock-prices',
+            type: 'get',
+            data: $('#testForm2').serialize(),
+            success: function(data) {
+              $('#jsonResultSingle').text(JSON.stringify(data));
+              $("#result-board-single").addClass("thick-border");
+            }
+          });
+         
+          e.preventDefault();
+        });
+        $('#testForm').submit(function(e) {
+          
+          $.ajax({
+            url: '/api/stock-prices',
+            type: 'get',
+            data: $('#testForm').serialize(),
+            success: function(data) {
+              $('#jsonResultCom').text(JSON.stringify(data));
+              $("#result-board-com").addClass("thick-border");
+           }
+          });
+          
+          e.preventDefault();
+        });
+      });
+   </script>
+  </body>
+</html>

@@ -4,6 +4,6 @@
 Project: NASDAQ Stock Price Checker
 
 
-### by: TheTradeCoder
+### by: tradecoder
 
 
